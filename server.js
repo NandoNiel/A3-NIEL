@@ -10,7 +10,7 @@ const session = require('express-session');
 app.use(session({
     secret: "the quick brown fox jumped over the lazy dog 1234567890",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
      store: MongoStore.create({
         mongoUrl: process.env.MONGO_URI
     })
