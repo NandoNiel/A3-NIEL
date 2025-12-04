@@ -1,0 +1,27 @@
+{
+  "name": "A3_FIRSTNAME",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tw:build": "tailwindcss build -i ./public/css/tailwind.css -o ./public/css/main.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "daisyui": "^4.12.24",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "mongodb": "^7.0.0",
+    "mongoose": "^8.20.1",
+    "nodemon": "^3.1.10"
+  }
+}

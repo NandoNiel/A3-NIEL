@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars List</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <!-- Navbar -->
+        <div class="navbar bg-base-100 my-6">
+            <div class="flex-1">
+                <a class="btn btn-ghost text-xl" href="/cars">Rent a Car</a>
+            </div>
+            <div class="flex-none">
+                <a class="btn btn-neutral" href="/logout">Logout</a>
+            </div>
+        </div>
+
+        <!-- Cars grid -->
+        <div class="grid grid-cols-3 gap-4 mt-6">
+            <% cars.forEach(car => { %>
+                <div class="card bg-base-100 w-96 shadow-xl card-bordered">
+                    <figure>
+                        <img src="<%= car.imageUrl %>" alt="<%= car.model %>" />
+                    </figure>
+                    <div class="card-body">
+                        <h2 class="card-title"><%= car.model %></h2>
+
+                        <% if (!car.rentedBy) { %>
+                            <!-- Car not rented -->
+                             <p>Click the button to book this car</p>
+                             <div class="card-actions justify-end">
+                            <a href="/book/<%= car._id %>" class="btn btn-primary">Book Car</a>
+                            </div>
+                        <% } else if (car.rentedBy.toString() === session.userId) { %>
+                            <!-- Rented by current user -->
+                            <p>Return Date: <%= car.returnDate %></p>
+                            <form action="/return" method="POST">
+                                <input type="hidden" name="carId" value="<%= car._id %>" />
+                                <div class="card-actions justify-end">
+                                <button class="btn btn-warning">Return</button>
+                                </div>
+                            </form>
+                        <% } else { %>
+                            <!-- Rented by someone else -->
+                            <p class="text-red-500">Unavailable until <%= car.returnDate %></p>
+                        <% } %>
+
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+
+</html>
