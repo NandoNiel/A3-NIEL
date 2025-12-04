@@ -158,7 +158,7 @@ app.post("/return", requireLogin, async (req, res) => {
 // ---------------------
 async function startServer() {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
+        
         console.log("SUCCESS connecting to MongoDB");
 
         app.listen(HTTP_PORT, () => {
