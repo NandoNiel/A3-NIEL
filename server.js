@@ -19,10 +19,9 @@ app.use(session({
     })
 }));
 
-
-
 // serve static files (CSS, images)
-app.use(express.static("public"));
+app.use(express.static(dirname + '/public'));  // css files
+app.set('views', dirname + '/views')
 
 // --- MongoDB Schemas ---
 const usersSchema = new mongoose.Schema({
