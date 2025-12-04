@@ -11,10 +11,14 @@ app.use(session({
     secret: "the quick brown fox jumped over the lazy dog 1234567890",
     resave: false,
     saveUninitialized: true
+     store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URI
+    })
 }));
 
 require("dotenv").config();
 const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')
 
 // serve static files (CSS, images)
 app.use(express.static("public"));
