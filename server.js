@@ -14,14 +14,11 @@ app.use(session({
     secret: "the quick brown fox jumped over the lazy dog 1234567890",
     resave: false,
     saveUninitialized: true,
-     store: MongoStore.create({
-        mongoUrl: process.env.MONGO_URI
-    })
 }));
 
 // serve static files (CSS, images)
-app.use(express.static(dirname + '/public'));  // css files
-app.set('views', dirname + '/views')
+app.use(express.static(__dirname + '/public'));  // css files
+app.set('views', __dirname + '/views');
 
 // --- MongoDB Schemas ---
 const usersSchema = new mongoose.Schema({
