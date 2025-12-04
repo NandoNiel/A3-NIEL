@@ -7,6 +7,9 @@ app.use(express.urlencoded({ extended: true })); // form parsing
 
 // setup sessions
 const session = require('express-session');
+require("dotenv").config();
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')
 app.use(session({
     secret: "the quick brown fox jumped over the lazy dog 1234567890",
     resave: false,
@@ -16,9 +19,7 @@ app.use(session({
     })
 }));
 
-require("dotenv").config();
-const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo')
+
 
 // serve static files (CSS, images)
 app.use(express.static("public"));
